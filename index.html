@@ -3,14 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <!-- 你的谷歌所有权验证雷达，永久守护此站 -->
+    <!-- 你的谷歌所有权验证雷达 -->
     <meta name="google-site-verification" content="Sq7uUjG0xX4rPywv6nQM93y_XzEYhK5cRc3REXnJsWc" />
     
     <title>NextGen Essentials | Premium Men's Horology, Style & Tech</title>
     <meta name="description" content="The definitive blueprint for the modern gentleman aged 18-40. Expert mechanical horology, minimalist menswear capsule, and high-performance 3C desk setups.">
     
     <style>
-        /* 全局高级暗黑底色重构 */
         :root {
             --bg-color: #0d0d0d;
             --card-bg: #141414;
@@ -27,19 +26,18 @@
             line-height: 1.6;
             max-width: 1040px;
             margin: 0 auto;
-            padding: 60px 24px;
+            padding: 40px 24px;
             -webkit-font-smoothing: antialiased;
         }
 
-        /* 苹果风极简奢华页眉 */
         header {
             text-align: center;
-            padding: 60px 0 80px 0;
+            padding: 40px 0 50px 0;
             border-bottom: 1px solid var(--border-color);
         }
 
         header h1 {
-            font-size: 3em;
+            font-size: 2.8em;
             font-weight: 700;
             letter-spacing: 4px;
             text-transform: uppercase;
@@ -57,33 +55,91 @@
             font-weight: 300;
         }
 
-        /* 核心精细化三栏网格布局 */
+        /* 新增：置顶大牌风——视频剧场板块（Featured Theater） */
+        .featured-theater {
+            margin-top: 50px;
+            background-color: var(--card-bg);
+            border: 1px solid var(--border-color);
+            border-radius: 16px;
+            padding: 24px;
+        }
+
+        .featured-theater h2 {
+            font-size: 1.4em;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--accent-gold);
+            margin-top: 0;
+            margin-bottom: 20px;
+        }
+
+        /* 视频响应式无缝容器（保证手机和电脑看都不变形） */
+        .video-wrapper {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 黄金比例 */
+            padding-top: 25px;
+            height: 0;
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-color);
+        }
+
+        .video-wrapper iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        /* 三栏卡片布局 */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 32px;
-            margin-top: 60px;
+            margin-top: 50px;
         }
 
-        /* 奢华质感卡片设计 */
         .category-box {
             background-color: var(--card-bg);
-            padding: 35px;
             border: 1px solid var(--border-color);
             border-radius: 12px;
             transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
             position: relative;
             overflow: hidden;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* 鼠标悬停时的微互动特效（高级质感关键） */
+        /* 新增：卡片顶部高级封面图（电影感微距视觉） */
+        .card-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover; /* 保证图片不变形裁切 */
+            border-bottom: 1px solid var(--border-color);
+            filter: grayscale(40%) brightness(80%); /* 调出压抑暗黑的高级电影调性 */
+            transition: all 0.5s ease;
+        }
+
+        .category-box:hover .card-image {
+            filter: grayscale(0%) brightness(95%); /* 鼠标悬停时恢复高饱和度 */
+            transform: scale(1.03); /* 苹果官网标志性的微放大视觉 */
+        }
+
+        .card-content {
+            padding: 28px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
         .category-box:hover {
             transform: translateY(-5px);
             border-color: var(--accent-gold);
             box-shadow: 0 12px 30px rgba(197, 168, 128, 0.08);
         }
 
-        /* 栏目数字编号标识 */
         .category-num {
             font-size: 0.85em;
             color: var(--accent-gold);
@@ -95,41 +151,37 @@
         }
 
         .category-box h2 {
-            font-size: 1.6em;
+            font-size: 1.5em;
             font-weight: 600;
-            margin: 0 0 16px 0;
-            letter-spacing: 1px;
+            margin: 0 0 12px 0;
             color: #ffffff;
         }
 
-        /* 高级超链接排版 */
         .article-link {
             display: inline-block;
             color: var(--text-main);
             text-decoration: none;
-            font-size: 1.15em;
+            font-size: 1.1em;
             font-weight: 600;
             margin-top: 20px;
             border-bottom: 1px solid transparent;
             transition: all 0.3s ease;
         }
 
-        .article-link:hover {
+        .category-box:hover .article-link {
             color: var(--accent-gold);
-            border-bottom-color: var(--accent-gold);
         }
 
         .article-desc {
             color: var(--text-muted);
             font-size: 0.95em;
-            margin-top: 8px;
+            margin: 0;
             font-weight: 300;
             text-align: justify;
         }
 
-        /* 页脚极简声明 */
         footer {
-            margin-top: 100px;
+            margin-top: 80px;
             text-align: center;
             font-size: 0.85em;
             color: var(--text-muted);
@@ -141,44 +193,67 @@
 </head>
 <body>
 
-    <!-- 奢华男士生活杂志页眉 -->
     <header>
         <h1>NextGen Essentials</h1>
         <p>The Definitive Blueprint for Horology, Minimalist Aesthetics & Tactical Gear.</p>
     </header>
 
-    <!-- 针对18-40岁男士精准拦截的三大板块 -->
+    <!-- ⚡ 新增板块：置顶视频剧场（用你最硬核的视频作为网站门面） -->
+    <div class="featured-theater">
+        <h2>Featured Cinematic Teardown</h2>
+        <div class="video-wrapper">
+            <!-- 💡 技术细节说明：把下方 URL 最后的 seiko 视频 ID 换成你自己的 YouTube 视频 ID 即可完美白嫖流媒体播放 -->
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+    </div>
+
+    <!-- 三栏视觉大牌卡片 -->
     <div class="grid-container">
         
-        <!-- 栏目一：中高端腕表（硬核机械美学） -->
+        <!-- 栏目一：腕表（配超高清微距质感图） -->
         <div class="category-box">
-            <span class="category-num">01 / Mechanical Horology</span>
-            <h2>Timepiece Engineering</h2>
-            <p class="article-desc">Deep dive into custom calibers, teardown photography, and secondary watch market investment trends.</p>
-            <a class="article-link" href="seiko-nh35-watch-modding-guide.html">Why Seiko NH35 Dominates Custom Builds →</a>
+            <!-- 这里我为你挑选了 Unsplash 全球版权无忧的高端机械表特写，天生高级 -->
+            <img class="card-image" src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&q=80&w=600" alt="Mechanical Horology">
+            <div class="card-content">
+                <div>
+                    <span class="category-num">01 / Horology</span>
+                    <h2>Timepiece Engineering</h2>
+                    <p class="article-desc">Deep dive into custom calibers, teardown photography, and secondary watch market investment trends.</p>
+                </div>
+                <a class="article-link" href="seiko-nh35-watch-modding-guide.html">Why Seiko NH35 Dominates Builds →</a>
+            </div>
         </div>
 
-        <!-- 栏目二：男士质感穿搭（不费力的时尚） -->
+        <!-- 栏目二：穿搭（配经典暗黑极简服装图） -->
         <div class="category-box">
-            <span class="category-num">02 / Minimalist Style</span>
-            <h2>The Capsule Wardrobe</h2>
-            <p class="article-desc">Stop overcomplicating fashion. Streamline your lifestyle with premium wardrobe essentials designed for precision styling.</p>
-            <a class="article-link" href="#">The 5 Core Outfits Every Modern Gentleman Needs →</a>
+            <img class="card-image" src="https://images.unsplash.com/photo-1617137968427-85924c800a22?auto=format&fit=crop&q=80&w=600" alt="Menswear Style">
+            <div class="card-content">
+                <div>
+                    <span class="category-num">02 / Minimalist Style</span>
+                    <h2>The Capsule Wardrobe</h2>
+                    <p class="article-desc">Stop overcomplicating fashion. Streamline your lifestyle with premium wardrobe essentials designed for precision styling.</p>
+                </div>
+                <a class="article-link" href="#">The 5 Core Outfits For Men →</a>
+            </div>
         </div>
 
-        <!-- 栏目三：极客/3C数码（桌面美学与生产力） -->
+        <!-- 栏目三：3C数码（配极客赛博冷光桌面图） -->
         <div class="category-box">
-            <span class="category-num">03 / Tech & Tactical Gear</span>
-            <h2>Productivity Infrastructure</h2>
-            <p class="article-desc">Curating high-performance hardware, server infrastructure, and clean minimalist workspace layouts for creators.</p>
-            <a class="article-link" href="#">Minimalist Desk Setup: Industrial Visual Aesthetics →</a>
+            <img class="card-image" src="https://images.unsplash.com/photo-1505740420928-5e560c06d30e?auto=format&fit=crop&q=80&w=600" alt="Tech & Gear">
+            <div class="card-content">
+                <div>
+                    <span class="category-num">03 / Tactical Gear</span>
+                    <h2>Productivity Setup</h2>
+                    <p class="article-desc">Curating high-performance hardware, server infrastructure, and clean minimalist workspace layouts for creators.</p>
+                </div>
+                <a class="article-link" href="#">Minimalist Desk Aesthetics →</a>
+            </div>
         </div>
 
     </div>
 
-    <!-- 页脚 -->
     <footer>
-        <p>&copy; 2026 NextGen Essentials. Designed for the Independent Creator. Powered by GitHub Pages.</p>
+        <p>&copy; 2026 NextGen Essentials. Powered by GitHub Pages.</p>
     </footer>
 
 </body>
